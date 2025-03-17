@@ -36,8 +36,7 @@ export function CrudScreenContent() {
         setIsEditClicked(true);
         setEditingIndex(Index);
         if(NewTask.trim() !== ""){
-            dispatch({type: "edit", payload: { index: Index, newTaskk: NewTask}})
-            console.log("New Task Name: " + NewTask + " index: " +Index);
+            dispatch({type: "edit", payload: { index: Index, newTaskk: NewTask}});
             setIsEditClicked(false);
             setEditingIndex(null);
             setNewTask("");
@@ -48,25 +47,18 @@ export function CrudScreenContent() {
         dispatch({type: "remove", payload: {toRemoveIndex: Index}});
         setEditingIndex(null);
         setIsEditClicked(false);
-        console.log("Task Name Removed: " + Task + " index: " +Index);
     }
 
     return (
         <View style={{
-            backgroundColor: theme.bgColor,
+            backgroundColor: theme.bgColor,  
             padding: 20,
             flex: 1, 
             transitionDuration: theme.transition
         }}>
             {/* navlists */}
-            <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
-                <Text style={{
-                    fontSize: 23,
-                    fontFamily: "sans-serif",
-                    color: theme.fontColor,
-                    transitionDuration: theme.transition,
-                    fontWeight: "bold"
-                }}>TodoList.</Text>
+            <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+                
                 <ToggleButton />
             </View>
         
@@ -80,8 +72,19 @@ export function CrudScreenContent() {
                     borderColor: theme.fontColor,
                     borderStyle: "solid",
                     borderWidth: 2,
+                    backgroundColor: "red" // Set task list background to red
                 }}>
-                    {/* Input and add button */}
+                    
+                    <Text style={{
+                    fontSize: 23,
+                    fontFamily: "sans-serif",
+                    color: theme.fontColor,
+                    transitionDuration: theme.transition,
+                    fontWeight: "bold",
+                    paddingRight: 20,
+                    alignSelf: "center" 
+                }}>To Do List</Text>
+                
                     <View style={{
                         flexDirection: "row",
                         justifyContent: "center",
@@ -91,7 +94,7 @@ export function CrudScreenContent() {
                         <TextInput
                             style={{ flex: 1}}
                             value={task}
-                            placeholder="Enter task..."
+                            placeholder="Input Task Here"
                             mode="outlined"
                             onChangeText={value => setTask(value)}
                             activeOutlineColor={task.trim() === "" ? "red" : "green"}
@@ -128,7 +131,7 @@ export function CrudScreenContent() {
                             {editIsClicked && editingIndex === index ? (
                                 <TextInput
                                     style={{ height: 45, width: "60%", padding: 2 }}
-                                    placeholder="Enter a new task..."
+                                    placeholder="Type a task"
                                     mode="outlined"
                                     value={newTask}
                                     onChangeText={value => setNewTask(value)}
@@ -159,11 +162,11 @@ export function CrudScreenContent() {
                                 </TouchableOpacity>
                             ))}
                             </View>
+
                         </View>
                     ))}
                 </View>
             </ScrollView>
         </View>        
-);
+    );
 }
-

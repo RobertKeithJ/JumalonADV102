@@ -127,9 +127,10 @@ const style = StyleSheet.create({
         padding: 5,
     },
     image: {
-        width: 160,
-        height: 140,
-        borderRadius: 100,
+        width: 200,
+        height: 150,
+        borderWidth: 0.5,
+        borderColor: "red",
     },
     imagePlacholder: {
         width: 200,
