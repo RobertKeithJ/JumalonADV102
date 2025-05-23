@@ -1,5 +1,4 @@
-;
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import { Checkbox, TextInput } from 'react-native-paper';
 
